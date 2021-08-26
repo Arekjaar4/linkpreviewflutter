@@ -1,14 +1,37 @@
 # link_preview_flutter
 
-Flutter package to preview links
+Link previewer reading the Open Graph tags
+
+    
+## Screenshots
+
+![App Screenshot](https://drive.google.com/uc?id=11wdnLmzgxI5F-JlS3dsscViJeqlnp7Oz)
+![App Screenshot](https://drive.google.com/uc?id=1B1v0sCfpVC0NdF1Mejq0Meyh8xbBIlYs)
+
+  
+## Features
+
+- Configurable background color ```background:```
+- Configurable font color ```fontColor:```
+- Configurable preview size ```size:```
+- Theming: ```rectangle-image-left```, ```rectangle-image-right```, ```square-image-up```, ```square-image-down```, ```square-image-center```
+
 
 ## Getting Started
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+```dart
+await LinkPreviewFlutter.create(
+          "https://freecons.herokuapp.com/",
+          type: 'rectangle-image-right',
+          size: 200,
+          background: Colors.black,
+          fontColor: Colors.white);
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Hi, Do you want to collaborate by inviting me to a coffee? 👋
+
+[![buymeacoffee](https://drive.google.com/uc?id=1lFRr7rhDH66bqb7SKIIPQ2YslcnGdu4_)](https://www.buymeacoffee.com/martinmul)
+
+## Keywords
+
+link, preview, angular, open graph, opengraph

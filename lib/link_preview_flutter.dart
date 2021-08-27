@@ -9,35 +9,42 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:link_preview_flutter/environment.dart';
 
+///Main package class
 class LinkPreviewFlutter {
+  ///Component background color
   static Color _background = Colors.white;
+  ///Component font color
   static Color _fontColor = Colors.black;
+  ///Default component background color
   static Color _defaultBackground = Colors.white;
+  ///Default component font color
   static Color _defaultFontColor = Colors.black;
+  ///Default component type
   static String _type = 'rectangle-image-left';
+  ///Default component size
   static double _size = 300;
-
+  ///Init component height
   static double _height = 0;
-
+  ///Init component width
   static double _width = 0;
-
+  ///Init component image height
   static double _heightImg = 0;
-
+  ///Init component image width
   static double _widthImg = 0;
-
+  ///Init component font size h2
   static double _fontSizeH2 = 0;
+  ///Init component font size h3
   static double _fontSizeH3 = 0;
+  ///Init component font size h4
   static double _fontSizeH4 = 0;
+  ///Init component font size h5
   static double _fontSizeH5 = 0;
-
+  ///Init component row width
   static double _widthRow = 0;
+  ///Create component channel
   static const MethodChannel _channel = const MethodChannel('link_preview');
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
-
+  ///Create component method
   static Future<Widget> create(String url,
       {String type, double size, Color background, Color fontColor}) async {
     LinkPreviewFlutter._setParams(type, size, background, fontColor);
@@ -65,7 +72,7 @@ class LinkPreviewFlutter {
         return LinkPreviewFlutter.rectangleImageLeft(op);
     }
   }
-
+  ///Config rectangle-image-left type
   static Future<Widget> rectangleImageLeft(OpengraphInterface op) async {
     return Container(
       width: LinkPreviewFlutter._width,
@@ -147,7 +154,7 @@ class LinkPreviewFlutter {
       ),
     );
   }
-
+  ///Config rectangle-image-right type
   static Future<Widget> rectangleImageRight(OpengraphInterface op) async {
     return Container(
       width: LinkPreviewFlutter._width,
@@ -230,7 +237,7 @@ class LinkPreviewFlutter {
       ),
     );
   }
-
+  ///Config square-image-up type
   static Future<Widget> squareImageUp(OpengraphInterface op) async {
     return Container(
       width: LinkPreviewFlutter._width,
@@ -301,7 +308,7 @@ class LinkPreviewFlutter {
       ),
     );
   }
-
+  ///Config square-image-center type
   static Future<Widget> squareImageCenter(OpengraphInterface op) async {
     return Container(
       width: LinkPreviewFlutter._width,
@@ -372,7 +379,7 @@ class LinkPreviewFlutter {
       ),
     );
   }
-
+  ///Config square-image-down type
   static Future<Widget> squareImageDown(OpengraphInterface op) async {
     return Container(
       width: LinkPreviewFlutter._width,
@@ -443,7 +450,7 @@ class LinkPreviewFlutter {
       ),
     );
   }
-
+  ///Setting component params
   static _setParams(
       [String type, double size, Color background, Color fontColor]) {
     type = type != null ? type : LinkPreviewFlutter._type;
@@ -475,12 +482,12 @@ class LinkPreviewFlutter {
       LinkPreviewFlutter._fontSizeH5 = LinkPreviewFlutter._widthRow * 0.04;
     }
   }
-
+  ///Cut overflow text
   static _cutText(text, double sizeText, double sizeRow, int colums) {
     int length = (sizeRow / sizeText).round() * colums;
     return text.length > length ? text.substring(0, length) + '...' : text;
   }
-
+  ///Cut url
   static _cutUrl(String url) {
     url = url.contains('https')
         ? url.replaceFirst('https://', '')

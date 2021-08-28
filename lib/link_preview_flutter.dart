@@ -13,40 +13,55 @@ import 'package:link_preview_flutter/environment.dart';
 class LinkPreviewFlutter {
   ///Component background color
   static Color _background = Colors.white;
+
   ///Component font color
   static Color _fontColor = Colors.black;
+
   ///Default component background color
   static Color _defaultBackground = Colors.white;
+
   ///Default component font color
   static Color _defaultFontColor = Colors.black;
+
   ///Default component type
   static String _type = 'rectangle-image-left';
+
   ///Default component size
   static double _size = 300;
+
   ///Init component height
   static double _height = 0;
+
   ///Init component width
   static double _width = 0;
+
   ///Init component image height
   static double _heightImg = 0;
+
   ///Init component image width
   static double _widthImg = 0;
+
   ///Init component font size h2
   static double _fontSizeH2 = 0;
+
   ///Init component font size h3
   static double _fontSizeH3 = 0;
+
   ///Init component font size h4
   static double _fontSizeH4 = 0;
+
   ///Init component font size h5
   static double _fontSizeH5 = 0;
+
   ///Init component row width
   static double _widthRow = 0;
+
   ///Create component channel
   static const MethodChannel _channel = const MethodChannel('link_preview');
 
   ///Create component method
   static Future<Widget> create(String url,
-      {String type, double size, Color background, Color fontColor}) async {
+      {String? type, double? size, Color? background, Color? fontColor}) async {
     LinkPreviewFlutter._setParams(type, size, background, fontColor);
     final response = await http.get(
       Uri.parse(Environment.API_URL + url),
@@ -72,6 +87,7 @@ class LinkPreviewFlutter {
         return LinkPreviewFlutter.rectangleImageLeft(op);
     }
   }
+
   ///Config rectangle-image-left type
   static Future<Widget> rectangleImageLeft(OpengraphInterface op) async {
     return Container(
@@ -82,7 +98,7 @@ class LinkPreviewFlutter {
           color: LinkPreviewFlutter._background),
       child: Row(
         children: [
-          Image.network(op.image,
+          Image.network(op.image!,
               width: LinkPreviewFlutter._widthImg,
               height: LinkPreviewFlutter._heightImg,
               fit: BoxFit.cover),
@@ -124,7 +140,7 @@ class LinkPreviewFlutter {
                           ),
                           Text(
                               LinkPreviewFlutter._cutText(
-                                  LinkPreviewFlutter._cutUrl(op.url),
+                                  LinkPreviewFlutter._cutUrl(op.url!),
                                   LinkPreviewFlutter._fontSizeH5,
                                   LinkPreviewFlutter._widthRow,
                                   2),
@@ -154,6 +170,7 @@ class LinkPreviewFlutter {
       ),
     );
   }
+
   ///Config rectangle-image-right type
   static Future<Widget> rectangleImageRight(OpengraphInterface op) async {
     return Container(
@@ -203,7 +220,7 @@ class LinkPreviewFlutter {
                           ),
                           Text(
                               LinkPreviewFlutter._cutText(
-                                  LinkPreviewFlutter._cutUrl(op.url),
+                                  LinkPreviewFlutter._cutUrl(op.url!),
                                   LinkPreviewFlutter._fontSizeH5,
                                   LinkPreviewFlutter._widthRow,
                                   2),
@@ -229,7 +246,7 @@ class LinkPreviewFlutter {
                   ],
                 ),
               )),
-          Image.network(op.image,
+          Image.network(op.image!,
               width: LinkPreviewFlutter._widthImg,
               height: LinkPreviewFlutter._heightImg,
               fit: BoxFit.cover),
@@ -237,6 +254,7 @@ class LinkPreviewFlutter {
       ),
     );
   }
+
   ///Config square-image-up type
   static Future<Widget> squareImageUp(OpengraphInterface op) async {
     return Container(
@@ -249,7 +267,7 @@ class LinkPreviewFlutter {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(op.image,
+          Image.network(op.image!,
               width: LinkPreviewFlutter._widthImg, fit: BoxFit.fill),
           Text(
             LinkPreviewFlutter._cutText(
@@ -281,7 +299,7 @@ class LinkPreviewFlutter {
                 ),
                 Text(
                     LinkPreviewFlutter._cutText(
-                        LinkPreviewFlutter._cutUrl(op.url),
+                        LinkPreviewFlutter._cutUrl(op.url!),
                         LinkPreviewFlutter._fontSizeH5,
                         LinkPreviewFlutter._widthRow,
                         2),
@@ -308,6 +326,7 @@ class LinkPreviewFlutter {
       ),
     );
   }
+
   ///Config square-image-center type
   static Future<Widget> squareImageCenter(OpengraphInterface op) async {
     return Container(
@@ -350,7 +369,7 @@ class LinkPreviewFlutter {
                 ),
                 Text(
                     LinkPreviewFlutter._cutText(
-                        LinkPreviewFlutter._cutUrl(op.url),
+                        LinkPreviewFlutter._cutUrl(op.url!),
                         LinkPreviewFlutter._fontSizeH5,
                         LinkPreviewFlutter._widthRow,
                         2),
@@ -360,7 +379,7 @@ class LinkPreviewFlutter {
               ],
             ),
           ),
-          Image.network(op.image,
+          Image.network(op.image!,
               width: LinkPreviewFlutter._widthImg, fit: BoxFit.fill),
           Text(
             LinkPreviewFlutter._cutText(
@@ -379,6 +398,7 @@ class LinkPreviewFlutter {
       ),
     );
   }
+
   ///Config square-image-down type
   static Future<Widget> squareImageDown(OpengraphInterface op) async {
     return Container(
@@ -421,7 +441,7 @@ class LinkPreviewFlutter {
                 ),
                 Text(
                     LinkPreviewFlutter._cutText(
-                        LinkPreviewFlutter._cutUrl(op.url),
+                        LinkPreviewFlutter._cutUrl(op.url!),
                         LinkPreviewFlutter._fontSizeH5,
                         LinkPreviewFlutter._widthRow,
                         2),
@@ -444,15 +464,16 @@ class LinkPreviewFlutter {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
-          Image.network(op.image,
+          Image.network(op.image!,
               width: LinkPreviewFlutter._widthImg, fit: BoxFit.fill),
         ],
       ),
     );
   }
+
   ///Setting component params
   static _setParams(
-      [String type, double size, Color background, Color fontColor]) {
+      [String? type, double? size, Color? background, Color? fontColor]) {
     type = type != null ? type : LinkPreviewFlutter._type;
     size = size != null ? size : LinkPreviewFlutter._size;
     LinkPreviewFlutter._background =
@@ -482,11 +503,13 @@ class LinkPreviewFlutter {
       LinkPreviewFlutter._fontSizeH5 = LinkPreviewFlutter._widthRow * 0.04;
     }
   }
+
   ///Cut overflow text
   static _cutText(text, double sizeText, double sizeRow, int colums) {
     int length = (sizeRow / sizeText).round() * colums;
     return text.length > length ? text.substring(0, length) + '...' : text;
   }
+
   ///Cut url
   static _cutUrl(String url) {
     url = url.contains('https')
@@ -499,11 +522,11 @@ class LinkPreviewFlutter {
 }
 
 class OpengraphInterface {
-  final String title;
-  final String description;
-  final String image;
-  final String url;
-  final String site_name;
+  final String? title;
+  final String? description;
+  final String? image;
+  final String? url;
+  final String? site_name;
 
   OpengraphInterface(
       {this.title, this.description, this.image, this.url, this.site_name});

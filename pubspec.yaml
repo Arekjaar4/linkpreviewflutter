@@ -1,11 +1,11 @@
 name: link_preview_flutter
 description: Flutter package to preview links without having to configure any backend
-version: 0.0.4
+version: 0.0.5
 author: Arekjaar<arekjaar4android@gmail.com>
 homepage: https://github.com/Arekjaar4/linkpreviewflutter.git
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
